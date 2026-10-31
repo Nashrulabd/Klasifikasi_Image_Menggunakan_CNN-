@@ -1,0 +1,22 @@
+{
+ "accuracy": 0.9826756715774536,
+ "loss": 0.060566797852516174,
+ "precision_macro": 0.9819812593499733,
+ "recall_macro": 0.9868940695280368,
+ "f1_macro": 0.9841945635753019,
+ "precision_weighted": 0.9833555087154243,
+ "recall_weighted": 0.9826756496631376,
+ "f1_weighted": 0.9827611907591732,
+ "n_train": 4152,
+ "n_val": 1039,
+ "num_classes": 8,
+ "epochs_phase1": 12,
+ "epochs_phase2": 4,
+ "train_minutes": 9.41441822052002,
+ "img_size": [
+  160,
+  160
+ ],
+ "batch": 32,
+ "clip_conf_threshold": 0.6
+}
