@@ -44,6 +44,16 @@ REQUIRED_FILES = [
     "confusion_matrix.csv"
 ]
 
+
+def show_image(path, caption=None):
+    """Buka gambar dengan PIL agar file rusak terdeteksi, lalu tampilkan."""
+    try:
+        with Image.open(path) as im:
+            im.load()
+            st.image(im.convert("RGB"), caption=caption, use_container_width=True)
+    except Exception as exc:
+        st.warning(f"Gambar `{Path(path).name}` tidak bisa dibuka: {exc}")
+
 st.title("🐠 Klasifikasi Citra Kehidupan Laut dengan CNN")
 
 # Periksa file hasil training
@@ -212,7 +222,7 @@ with tab1:
         image_path = OUT / filename
 
         if image_path.exists():
-            st.image(str(image_path), caption=caption)
+            show_image(image_path, caption)
 
 
 # ==================================================
@@ -335,7 +345,7 @@ with tab3:
     cm_image = OUT / "6_confusion_matrix.png"
 
     if cm_image.exists():
-        st.image(str(cm_image))
+        show_image(cm_image)
 
     if cm.shape[0] > 1 and cm.shape[1] > 1:
         values = cm.to_numpy().copy()
@@ -379,7 +389,7 @@ with tab4:
         image_path = OUT / filename
 
         if image_path.exists():
-            st.image(str(image_path), caption=caption)
+            show_image(image_path, caption)
 
     if not any((OUT / f).exists() for f, _ in examples):
         st.info(
