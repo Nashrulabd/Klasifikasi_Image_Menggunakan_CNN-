@@ -65,6 +65,23 @@ def show_image(path, caption=None):
         st.warning(f"Gambar `{Path(path).name}` ({size} byte) tidak valid: {exc}")
 
 
+def show_pil(img, caption=None):
+    """Tampilkan gambar PIL/array lewat base64 (tanpa media server Streamlit)."""
+    import base64, io
+    if not isinstance(img, Image.Image):
+        img = Image.fromarray(np.asarray(img).astype("uint8"))
+    buf = io.BytesIO()
+    img.convert("RGB").save(buf, format="PNG")
+    b64 = base64.b64encode(buf.getvalue()).decode()
+    st.markdown(
+        f'<figure style="margin:0 0 1.2rem 0;text-align:center">'
+        f'<img src="data:image/png;base64,{b64}" style="max-width:100%;height:auto">'
+        f'<figcaption style="opacity:.7;font-size:.85rem">{caption or ""}</figcaption>'
+        f'</figure>',
+        unsafe_allow_html=True,
+    )
+
+
 st.title("🐠 Klasifikasi Citra Kehidupan Laut dengan CNN")
 
 # Periksa file hasil training
@@ -523,11 +540,8 @@ with tab5:
 
             col1, col2 = st.columns(2)
 
-            col1.image(
-                image,
-                caption="Gambar yang diunggah",
-                use_container_width=True
-            )
+            with col1:
+                show_pil(image, "Gambar yang diunggah")
 
             col2.success(
                 f"Prediksi: {classes[top]} "
@@ -571,11 +585,8 @@ with tab5:
                     0.55 * arr + 0.45 * heat
                 ).clip(0, 255).astype("uint8")
 
-                col1.image(
-                    overlay,
-                    caption="Visualisasi Grad-CAM",
-                    use_container_width=True
-                )
+                with col1:
+                    show_pil(overlay, "Visualisasi Grad-CAM")
 
             except Exception as exc:
                 st.warning(
