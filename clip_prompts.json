@@ -1,0 +1,64 @@
+{
+ "fish": [
+  "a photo of a fish swimming underwater",
+  "a school of fish in the ocean",
+  "a colorful reef fish",
+  "a close-up photo of a fish"
+ ],
+ "shark": [
+  "a photo of a shark",
+  "a shark swimming in the ocean",
+  "a great white shark underwater",
+  "a whale shark"
+ ],
+ "coral": [
+  "a photo of a coral reef",
+  "colorful hard coral underwater",
+  "soft coral on a reef",
+  "a coral colony on the seabed"
+ ],
+ "octopus": [
+  "a photo of an octopus",
+  "an octopus underwater with tentacles",
+  "a squid or a cuttlefish",
+  "a cephalopod in the sea"
+ ],
+ "crustacean": [
+  "a photo of a crab",
+  "a photo of a lobster",
+  "a photo of a shrimp",
+  "a crustacean on the seabed"
+ ],
+ "seaweed": [
+  "a photo of seaweed underwater",
+  "a kelp forest",
+  "green marine algae on rocks",
+  "seaweed floating in the sea"
+ ],
+ "sponge": [
+  "a photo of a sea sponge",
+  "a tube sponge on a reef",
+  "a barrel sponge underwater",
+  "a marine sponge"
+ ],
+ "other_marine": [
+  "a photo of a jellyfish",
+  "a photo of a starfish",
+  "a photo of a sea turtle",
+  "a photo of a dolphin",
+  "a photo of a whale",
+  "a photo of a sea urchin",
+  "a photo of a seahorse",
+  "a photo of a manta ray",
+  "a photo of a sea anemone",
+  "a photo of a seal or sea lion"
+ ],
+ "irrelevant": [
+  "a photo of a scuba diver",
+  "a photo of a boat or ship",
+  "a photo of a beach landscape",
+  "a photo of a person",
+  "a drawing, diagram or text",
+  "a photo of a building"
+ ]
+}
