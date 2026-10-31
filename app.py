@@ -46,13 +46,24 @@ REQUIRED_FILES = [
 
 
 def show_image(path, caption=None):
-    """Buka gambar dengan PIL agar file rusak terdeteksi, lalu tampilkan."""
+    """Verifikasi gambar dengan PIL, lalu sematkan langsung (base64) ke halaman."""
+    import base64, io
     try:
-        with Image.open(path) as im:
-            im.load()
-            st.image(im.convert("RGB"), caption=caption, use_container_width=True)
+        raw = Path(path).read_bytes()
+        with Image.open(io.BytesIO(raw)) as im:
+            im.verify()
+        b64 = base64.b64encode(raw).decode()
+        st.markdown(
+            f'<figure style="margin:0 0 1.2rem 0;text-align:center">'
+            f'<img src="data:image/png;base64,{b64}" style="max-width:100%;height:auto">'
+            f'<figcaption style="opacity:.7;font-size:.85rem">{caption or ""}</figcaption>'
+            f'</figure>',
+            unsafe_allow_html=True,
+        )
     except Exception as exc:
-        st.warning(f"Gambar `{Path(path).name}` tidak bisa dibuka: {exc}")
+        size = Path(path).stat().st_size if Path(path).exists() else -1
+        st.warning(f"Gambar `{Path(path).name}` ({size} byte) tidak valid: {exc}")
+
 
 st.title("🐠 Klasifikasi Citra Kehidupan Laut dengan CNN")
 
