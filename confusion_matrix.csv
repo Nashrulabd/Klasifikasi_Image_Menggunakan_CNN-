@@ -1,0 +1,9 @@
+,coral,crustacean,fish,octopus,other_marine,seaweed,shark,sponge
+coral,92,0,0,2,0,0,0,0
+crustacean,3,121,1,0,0,0,0,0
+fish,1,0,331,4,0,0,3,0
+octopus,0,0,0,109,0,0,0,0
+other_marine,0,0,0,0,139,0,4,0
+seaweed,0,0,0,0,0,18,0,0
+shark,0,0,0,0,0,0,141,0
+sponge,0,0,0,0,0,0,0,70
